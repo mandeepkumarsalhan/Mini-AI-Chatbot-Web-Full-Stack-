@@ -177,7 +177,9 @@ Frontend opens at: `http://localhost:3000`
 - Set `ALLOWED_ORIGINS` to your deployed frontend URL in production
 
 ---
-
+## Live Demo
+- 🌐 [Live Demo]https://mini-ai-chatbot-web-full-stack-daz14ato2.vercel.app/
+--- 
 ## 📝 License
 
 MIT License — Created with ❤️ by Mandeep.
