@@ -99,6 +99,10 @@ export default function App() {
         sendMessage={sendMessage} 
         loading={loading} 
       />
+
+      <footer className="text-center text-slate-500 text-xs py-2">
+        Developed with ❤️ by Mandeep Salhan
+      </footer>
     </div>
   );
 }
