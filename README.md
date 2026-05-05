@@ -1,105 +1,183 @@
-# Mini AI Chatbot (Fullstack)
+# Mini AI Chatbot — Full Stack
 
-A modern, fullstack AI chatbot application featuring a sleek React frontend and a robust FastAPI backend. It utilizes Cloudflare Workers AI with Meta's LLaMA 3 model to provide intelligent, conversational responses with persistent memory.
+A modern full-stack AI chatbot application with a **Python FastAPI backend** and a **React TypeScript frontend**. Powered by **Cloudflare Workers AI** (Meta LLaMA 3) for intelligent, conversational responses with persistent chat memory.
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
--   **Premium Glassmorphism UI**: A stunning, modern interface with transparency, blur effects, and vibrant gradients.
--   **Persistent Memory**: Chat history is saved in a local `chat_history.json` file on the backend.
--   **Smart Context Management**: Automatically trims history (sending only the last 10 messages) to stay within AI context limits and save tokens.
--   **Secure Credentials**: API keys are managed securely via a `.env` file.
--   **Fast & Responsive**: Built with FastAPI for high-performance backend logic and React for a "snappy" user experience.
--   **Enter to Send**: Support for keyboard interactions in the chat.
+- **Glassmorphism UI** — sleek dark interface with blur effects and vibrant gradients
+- **Persistent Memory** — chat history saved locally in `chat_history.json`
+- **Smart Context Trimming** — sends only last 10 messages to avoid token limits
+- **Secure Credentials** — API keys managed via `.env` files (never committed)
+- **CORS Configured** — whitelist specific frontend origins for security
+- **Keyboard Accessible** — press `Enter` to send messages
 
 ---
 
 ## 🛠️ Tech Stack
 
--   **Backend**: Python 3.x, FastAPI, Uvicorn, Requests, Python-dotenv.
--   **Frontend**: React (TypeScript), Tailwind CSS, Lucide Icons.
--   **AI Engine**: Cloudflare Workers AI (@cf/meta/llama-3-8b-instruct).
+| Layer     | Technology                                      |
+|-----------|-------------------------------------------------|
+| Backend   | Python 3.x, FastAPI, Uvicorn, Python-dotenv     |
+| Frontend  | React 19, TypeScript, Tailwind CSS, Lucide Icons |
+| AI Engine | Cloudflare Workers AI (`@cf/meta/llama-3-8b-instruct`) |
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-/Mini AI Chatbot
-├── chatbot.py           # Core AI logic (API calls & history management)
-├── main.py              # FastAPI server entry point
-├── .env                 # API keys (hidden)
-├── .gitignore           # Files to ignore in Git
-├── requirements.txt     # Python dependencies list
-├── chat_history.json    # Local database for chat logs
-└── /chatbot-ui          # React Frontend Folder
-    ├── /src
-    │   ├── /components  # Modular UI parts (Header, Message, Input)
-    │   ├── App.tsx      # Main frontend logic
-    │   └── index.css    # Tailwind & global styles
-    └── tailwind.config.js
+Mini AI Chatbot/
+├── backend/                    # Python FastAPI backend
+│   ├── main.py                 # API server entry point
+│   ├── chatbot.py              # Cloudflare AI logic & history
+│   ├── requirements.txt        # Python dependencies
+│   ├── .env                    # ⚠️ Real credentials (gitignored)
+│   └── .env.example            # Template — copy and fill in
+│
+├── frontend/                   # React TypeScript frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ChatHeader.tsx
+│   │   │   ├── ChatInput.tsx
+│   │   │   └── ChatMessage.tsx
+│   │   ├── App.tsx             # Main app logic
+│   │   └── index.css           # Tailwind & global styles
+│   ├── .env                    # ⚠️ Frontend env (gitignored)
+│   ├── .env.example            # Template — copy and fill in
+│   ├── package.json
+│   └── tailwind.config.js
+│
+├── .gitignore                  # Root-level ignore rules
+└── README.md
 ```
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Setup
 
-### 1. Backend Setup (Python)
+### Prerequisites
 
-1.  **Create a Virtual Environment**:
-    ```powershell
-    python -m venv .venv
-    .venv\Scripts\activate
-    ```
-2.  **Install Dependencies**:
-    ```powershell
-    pip install -r requirements.txt
-    ```
-3.  **Configure Environment Variables**:
-    Create a `.env` file in the root directory and add your Cloudflare credentials:
-    ```env
-    CLOUDFLARE_API_TOKEN=your_api_token_here
-    CLOUDFLARE_ACCOUNT_ID=your_account_id_here
-    ALLOWED_ORIGINS=http://localhost:3000,https://your-site.vercel.app
-    ```
-
-### 2. Frontend Setup (React)
-
-1.  **Navigate to the UI folder**:
-    ```powershell
-    cd chatbot-ui
-    ```
-2.  **Install Dependencies**:
-    ```powershell
-    npm install
-    ```
-3.  **Configure Environment Variables**:
-    Create a `.env` file in the `chatbot-ui` folder:
-    ```env
-    REACT_APP_API_URL=http://localhost:8000
-    ```
+- Python 3.9+
+- Node.js 18+ and npm
+- A [Cloudflare account](https://dash.cloudflare.com) with Workers AI enabled
 
 ---
 
-## 🏃 How to Run
+### 1. Backend Setup
 
-You need **two terminals** open to run the full application:
-
-### Terminal 1: Start Backend
 ```powershell
+cd backend
+```
+
+**Create and activate a virtual environment:**
+```powershell
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+**Install dependencies:**
+```powershell
+pip install -r requirements.txt
+```
+
+**Configure environment variables:**
+
+Copy the example file and fill in your credentials:
+```powershell
+Copy-Item .env.example .env
+```
+
+Edit `backend/.env`:
+```env
+CLOUDFLARE_API_TOKEN=your_api_token_here
+CLOUDFLARE_ACCOUNT_ID=your_account_id_here
+ALLOWED_ORIGINS=http://localhost:3000
+```
+
+> Get your credentials from [Cloudflare Dashboard → API Tokens](https://dash.cloudflare.com/profile/api-tokens)
+
+---
+
+### 2. Frontend Setup
+
+```powershell
+cd frontend
+```
+
+**Install dependencies:**
+```powershell
+npm install
+```
+
+**Configure environment variables:**
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Edit `frontend/.env`:
+```env
+REACT_APP_API_URL=http://localhost:8000
+```
+
+---
+
+## 🏃 Running the App
+
+You need **two terminals** running simultaneously.
+
+### Terminal 1 — Start Backend
+
+```powershell
+cd backend
+.venv\Scripts\activate
 uvicorn main:app --reload
 ```
-*The backend will run at `http://127.0.0.1:8000`*
 
-### Terminal 2: Start Frontend
+Backend runs at: `http://127.0.0.1:8000`  
+API docs at: `http://127.0.0.1:8000/docs`
+
+### Terminal 2 — Start Frontend
+
 ```powershell
-cd chatbot-ui
+cd frontend
 npm start
 ```
-*The frontend will open in your browser at `http://localhost:3000`*
+
+Frontend opens at: `http://localhost:3000`
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description          |
+|--------|----------|----------------------|
+| GET    | `/`      | Health check         |
+| POST   | `/chat`  | Send a chat message  |
+
+**POST `/chat` — Request body:**
+```json
+{ "message": "Hello!" }
+```
+
+**Response:**
+```json
+{ "response": "Hi there! How can I help you today?" }
+```
+
+---
+
+## 🔒 Security Notes
+
+- **Never commit `.env` files** — they are gitignored at both root and folder levels
+- Use `.env.example` as a safe template to share with collaborators
+- Rotate your `CLOUDFLARE_API_TOKEN` if it was ever pushed to a public repo
+- Set `ALLOWED_ORIGINS` to your deployed frontend URL in production
 
 ---
 
 ## 📝 License
-MIT License - Created with ❤️ by Mandeep.
+
+MIT License — Created with ❤️ by Mandeep.

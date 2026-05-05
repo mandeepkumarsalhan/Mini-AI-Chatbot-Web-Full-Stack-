@@ -1,34 +1,41 @@
-# Python
+# ─── Python / Backend ──────────────────────────────────────────────────────────
+backend/.venv/
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/chat_history.json
+
+# Virtual envs at root (legacy)
 .venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
 venv/
-pip-log.txt
-pip-delete-this-directory.txt
+env/
+__pycache__/
 
-# Chat Data
-chat_history.json
-
-# Environment Variables
+# ─── Environment Variables ─────────────────────────────────────────────────────
 .env
-chatbot-ui/.env
+backend/.env
+frontend/.env
 
-# Node / Frontend
+# ─── Node / Frontend ───────────────────────────────────────────────────────────
+frontend/node_modules/
+frontend/build/
+frontend/.eslintcache
 node_modules/
-chatbot-ui/node_modules/
-chatbot-ui/build/
-.eslintcache
 
-# OS Files
+# ─── OS Files ──────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 
-# IDEs
+# ─── IDEs ──────────────────────────────────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
 *.swo
+
+# ─── Logs ──────────────────────────────────────────────────────────────────────
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pip-log.txt
