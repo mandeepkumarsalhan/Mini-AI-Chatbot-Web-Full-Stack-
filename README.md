@@ -170,7 +170,7 @@ Frontend opens at: `http://localhost:3000`
 ---
 
 ## Live Demo
-- 🌐 [Live Demo] (https://mini-ai-chatbot-web-full-stack-daz14ato2.vercel.app/)
+- 🌐 [Live Demo](https://mini-ai-chatbot-web-full-stack-daz14ato2.vercel.app/)
 --- 
 ## 📝 License
 
