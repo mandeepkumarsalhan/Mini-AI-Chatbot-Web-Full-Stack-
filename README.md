@@ -170,8 +170,8 @@ Frontend opens at: `http://localhost:3000`
 ---
 
 ## Live Demo
-- 🌐 [Live Demo](https://mini-ai-chatbot-web-full-stack.vercel.app/)
-- <img width="1868" height="952" alt="image" src="https://github.com/user-attachments/assets/13ace0e5-4f3d-482e-82a5-5001d7b89aa4" />
+ 🌐 [Live Demo](https://mini-ai-chatbot-web-full-stack.vercel.app/)
+ <img width="1868" height="952" alt="image" src="https://github.com/user-attachments/assets/13ace0e5-4f3d-482e-82a5-5001d7b89aa4" />
 
 --- 
 ## 📝 License
